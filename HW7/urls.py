@@ -25,7 +25,8 @@ urlpatterns = [
     path('logout/', logout, name="logout"),
     path('signup/', signup, name="signup"),
     path('create/', create, name="create"),
-    path('edit/<str:id', edit, name='edit'),
+    path('edit/<str:id>', edit, name='edit'),
+    path('<str:id>', detail, name="detail"),
     path('update/<str:id>', update, name="update"),
     path('delete/<str:id>', delete, name="delete"),
 ]

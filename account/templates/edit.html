@@ -1,7 +1,15 @@
-<form action="{%url 'update' FreePost.id %}" method="post">
-    {%csrf_token%}
-    <p>제목: <input type="text" name="title" value="{{FreePost.title}}"></p>
-    <p>작성자: <input type="text" name="writer" value="{{FreePost.author}}"></p>
-    본문: <textarea name="body" id="" cols="30" rows="10">{{FreePost.body}}}</textarea>
-    <button type="submit">수정하기</button>
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>게시글 수정</h1>
+
+<form action="{% url 'update' freepost.id %}" method="POST">
+    {% csrf_token %}
+    <p>제목: <input type="text" name="title" value="{{freepost.title}}"></p>
+    <p>작성자: {{freepost.author}}</p>
+    내용: <textarea name="body" cols="30" rows="10">{{freepost.body}}</textarea>
+    <button type="submit">완료</button>
 </form>
+
+{% endblock %}

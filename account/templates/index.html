@@ -1,3 +1,7 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +10,7 @@
     <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
+<!-- <body>
     <h1>홈</h1>
     <a href = "{% url 'login' %}">로그인</a>
     <a href = "{% url 'logout' %}">로그아웃</a>
@@ -20,12 +24,15 @@
     {% else %}
         <a href="{% url 'login' %}">로그인</a>
         <a href="{% url 'signup' %}">회원가입</a>
-    {% endif %}
+
+    {% endif %} -->
 
     {% for post in posts %}
-        <h3>제목: {{post.title}}</h3>
+        <h3>제목: <a href = "{% url 'detail' post.id %}">{{post.title}}</a></h3>
         <p>내용: {{post.body}}</p>
         <p>작성자: {{post.author.username}}</p>
     {% endfor %}
 </body>
 </html>
+
+{% endblock %}

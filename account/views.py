@@ -60,14 +60,13 @@ def detail(request, id):
     freepost = get_object_or_404(FreePost, pk = id)
     return render(request, 'detail.html', {'freepost': freepost})
 
-def edit(request):
+def edit(request, id):
     edit_freepost = FreePost.objects.get(id=id)
     return render(request, 'edit.html', {'freepost':edit_freepost})
 
 def update(request, id):
-    update_freepost = FreePost.ojbects.get(id = id)
+    update_freepost = FreePost.objects.get(id=id)
     update_freepost.title = request.POST['title']
-    update_freepost.author = request.POST['writer']
     update_freepost.body = request.POST['body']
     update_freepost.save()
     return redirect('detail', update_freepost.id)

@@ -1,18 +1,21 @@
-<div>
-    <h1>{{FreePost.title}}</h1>
-    작성자: {{FreePost.author}}
-</div>
-<br>
-{{FreePost.body}}
+{% extends 'base.html' %}
+
+{% block content %}
 
 <div>
-    <h3>댓글</h3>
+    <h1>{{freepost.title}}</h1>
+    작성자: {{freepost.author}}
+    <br>
+    내용: {{freepost.body}}
 </div>
-<a href = "{% url 'edit' blog.id %}"?>수정하기</a>
-<a href = "{% url 'delete' blog.id %}">삭제하기</a>
+{% if user == freepost.author %}
+    <a href = "{% url 'edit' freepost.id %}"?>수정하기</a>
+    <a href = "{% url 'delete' freepost.id %}">삭제하기</a>
+{% endif %}
 
+<div>
+    <br>
+    <button type="submit"><a href = "{% url 'home' %}"">홈</a></button>
+</div>
 
-<form action="{%url 'create'%}" method="POST" enctype="multipart/form-data">
-    Comment: <textarea name="body" id="" cols="30" rows="10"></textarea>
-    <button type="submit">댓글 입력</button>
-    <button type="submit">홈</button>
+{% endblock %}
